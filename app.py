@@ -1,5 +1,6 @@
 from flask import Flask, request
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 
@@ -11,4 +12,5 @@ def receber_dados():
     return {'status': 'ok'}
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
